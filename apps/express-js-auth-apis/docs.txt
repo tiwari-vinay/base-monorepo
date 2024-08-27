@@ -1,0 +1,10 @@
+What architecture to use for the application?
+MVC - Model, Views and Controllers 
+Files 
+app.js , routes, middlewares , controllers, services
+lib -> monitoring, tracing, logging, etc
+
+
+Mongodb 
+username : itcgel
+pwd: HO2SvVZMossUdMe6

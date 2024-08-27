@@ -9,3 +9,7 @@ node_modules
 .output
 /infra/**/build
 /infra/**/dist
+
+
+.nx/cache
+.nx/workspace-data
