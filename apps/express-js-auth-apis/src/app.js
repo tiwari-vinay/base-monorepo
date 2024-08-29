@@ -10,9 +10,7 @@ dotenv.config();
 
 import { userModel } from './model/user.js';
 
-const URL =
-  'mongodb+srv://itcgel:HO2SvVZMossUdMe6@cluster0.mximc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
-mongoose.connect(URL);
+mongoose.connect(process.env.MONGO_URL);
 
 const app = express();
 app.use(bodyParser.json());

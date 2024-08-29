@@ -8,7 +8,7 @@ node_modules
 .vercel
 .output
 /infra/**/build
-/infra/**/dist
+/infra/**/distck
 
 
 .nx/cache

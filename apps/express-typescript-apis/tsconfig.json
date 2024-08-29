@@ -1,0 +1,15 @@
+{
+    // write all the configurations of ts-config including outdir to dist
+    "compilerOptions": {
+        "target": "ES6",
+        "module": "NodeNext", 
+        "moduleResolution": "NodeNext", 
+        "baseUrl": "./src",
+        "outDir": "./dist", 
+        "sourceMap": true, 
+        "noImplicitAny": true, 
+        "strict": true, 
+    },
+    "include": ["src/**/*.ts"],
+    "exclude": ["node_modules", "**/*.test.ts", "dist"]
+}
