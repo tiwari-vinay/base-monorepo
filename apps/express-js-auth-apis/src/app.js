@@ -8,9 +8,10 @@ import cors from 'cors';
 
 dotenv.config();
 
-import { userModel } from './model/user.js';
+import { UserModel } from './model/user.js';
+import { TodoModel } from './model/todos.js';
 
-mongoose.connect(process.env.MONGO_URL);
+mongoose.connect('mongodb+srv://itcgel:HO2SvVZMossUdMe6@cluster0.mximc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0');
 
 const app = express();
 app.use(bodyParser.json());
@@ -18,12 +19,12 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/users', async (req, res) => {
-  const users = await userModel.find();
+  const users = await UserModel.find();
   res.status(200).json({ message: 'ok', users: [users] });
 });
 app.post('/auth/login', async (req, res) => {
   const { username, password } = req.body;
-  const user = await userModel.findOne({ username });
+  const user = await UserModel.findOne({ username });
 
   if (!user) {
     return res.status(400).json({ message: 'User does not exist' });
@@ -57,7 +58,7 @@ app.post('/auth/register', async (req, res) => {
   const encryptedPassword = await bcrypt.hash(password, 10);
 
   try {
-    const response = await userModel.create({
+    const response = await UserModel.create({
       email,
       username,
       password: encryptedPassword,
@@ -71,6 +72,33 @@ app.post('/auth/register', async (req, res) => {
         .status(400)
         .json({ message: 'Email or username already exists' });
     return res.status(500).json({ message: 'Failed to create user' });
+  }
+});
+
+//Todos
+app.get('/todos', async (req, res) => {
+  const todos = await TodoModel.find();
+  res.status(200).json({ message: 'ok', todos: todos });
+});
+
+app.post('/todos', async (req, res) => {
+  const { todoHead, todoBody } = req.body;
+
+  // if (!todoHead) {
+  //   return res.status(400).json({ message: 'Todo must have title' });
+  // }
+
+  try {
+    const response = await TodoModel.create({
+      todoHead,
+      todoBody,
+    });
+    return res
+     .status(201)
+     .json({ message: { title: response.todoHead, id: response._id } });
+  } catch (err) {
+    console.log(err.message);
+    return res.status(500).json({ message: 'Failed to create todo' });
   }
 });
 

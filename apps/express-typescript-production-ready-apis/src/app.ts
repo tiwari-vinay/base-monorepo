@@ -3,7 +3,7 @@ import express from 'express';
 import cookieParser from 'cookie-parser';
 import Controller from './interface/interface.controller';
 import mongoose from 'mongoose';
-import errorMiddleware from 'middlewares/error.middleware';
+import errorMiddleware from './middlewares/error.middleware';
 
 class App {
   public app: express.Application;
@@ -43,7 +43,6 @@ class App {
     this.app.use(bodyParser.json());
     this.app.use(bodyParser.urlencoded({ extended: true }));
     this.app.use(cookieParser());
-    
   }
   private initializeErrorHandlers() {
     // initialize error handlers here

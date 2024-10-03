@@ -36,4 +36,6 @@ userSchema.virtual('post', {
 });
 
 const userModel = mongoose.model <User & mongoose.Document> ('User', userSchema);
+console.log("model created");
+
 export default userModel;

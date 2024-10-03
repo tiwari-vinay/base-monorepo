@@ -1,4 +1,5 @@
 node_modules
+node_modules_old
 /build
 /.svelte-kit
 /package
@@ -9,7 +10,17 @@ node_modules
 .output
 /infra/**/build
 /infra/**/distck
-
-
+/package
+.env
+.env.*
+!.env.example
+.vercel
+.output
+/packages/**/build
+/packages/**/dist
+/apps/**/build
+/apps/**/dist
+/infra/**/build
+/infra/**/dist
 .nx/cache
 .nx/workspace-data

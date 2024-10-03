@@ -1,8 +1,5 @@
-
-
-
 export const getAllUsers = () =>{
-
+    return "users"
 }
 
 export const getUserById = (id: String) =>{
